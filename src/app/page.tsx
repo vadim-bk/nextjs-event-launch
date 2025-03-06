@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Poppins } from "next/font/google";
 import { FrameworkRotation } from "@/components/FrameworkRotation";
+import { CountdownTimer } from "@/components/CountdownTimer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -150,6 +151,8 @@ export default function Home() {
               Claim ticket
             </button>
           </div>
+
+          <CountdownTimer currentFramework={currentFramework} />
         </div>
       </div>
     </main>

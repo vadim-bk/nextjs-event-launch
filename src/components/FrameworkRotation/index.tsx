@@ -7,7 +7,7 @@ type Props = {
   currentFramework: Framework;
 };
 
-const getFrameworkStyles = (
+const getClass = (
   framework: Framework,
   currentFramework: Framework,
   index: number
@@ -27,7 +27,7 @@ export const FrameworkRotation = ({ currentFramework }: Props) => {
           key={framework}
           className={cn(
             "w-full h-full object-contain object-center absolute top-0 left-0 transition-all duration-300",
-            getFrameworkStyles(framework, currentFramework, index)
+            getClass(framework, currentFramework, index)
           )}
           src={assets[framework]}
           alt={framework}
