@@ -5,6 +5,12 @@ import { Framework, frameworks } from "@/utils/framework";
 import { cn } from "@/utils/tailwind";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: "700",
+});
 
 export default function Home() {
   const [currentFramework, setCurrentFramework] = useState<Framework>(
@@ -70,6 +76,23 @@ export default function Home() {
           showBackground ? "opacity-0" : "opacity-100"
         )}
       />
+
+      <div className="max-w-7xl mt-20 mx-auto">
+        <div className="flex flex-col items-center relative z-10">
+          <h1
+            className={`text-5xl max-w-3xl text-center leading-snug mb-12 ${poppins.className}`}
+          >
+            <Image
+              className="inline-block mr-8 mt-2"
+              src={assets.figma}
+              alt="Figma logo"
+              width={50}
+              height={50}
+            />
+            to Framework will <span>never</span> be the same again
+          </h1>
+        </div>
+      </div>
     </main>
   );
 }
