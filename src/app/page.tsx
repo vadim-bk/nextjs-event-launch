@@ -129,6 +129,27 @@ export default function Home() {
               src={assets.figmatwo}
             />
           </p>
+
+          <div className="mb-8">
+            <button
+              className={cn(
+                "text-black px-6 py-3 rounded-md text-sm font-semibold transition-colors duration-200",
+                {
+                  "bg-purple-300": currentFramework === "qwik",
+                  "bg-sky-300": currentFramework === "safari",
+                  "bg-yellow-300": currentFramework === "chrome",
+                  "bg-teal-300": currentFramework === "tailwind",
+                  "bg-blue-300": currentFramework === "react",
+                  "bg-green-300": currentFramework === "vue",
+                  "bg-orange-400": currentFramework === "svelte",
+                  "bg-red-300": currentFramework === "mobile",
+                  "bg-neutral-300": currentFramework === "desktop",
+                }
+              )}
+            >
+              Claim ticket
+            </button>
+          </div>
         </div>
       </div>
     </main>
