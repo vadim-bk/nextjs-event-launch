@@ -6,6 +6,7 @@ import { cn } from "@/utils/tailwind";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Poppins } from "next/font/google";
+import { FrameworkRotation } from "@/components/FrameworkRotation";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -89,7 +90,23 @@ export default function Home() {
               width={50}
               height={50}
             />
-            to Framework will <span>never</span> be the same again
+            to <FrameworkRotation currentFramework={currentFramework} /> will{" "}
+            <span
+              className={cn("transition-colors duration-200", {
+                "text-purple-300": currentFramework === "qwik",
+                "text-sky-300": currentFramework === "safari",
+                "text-yellow-300": currentFramework === "chrome",
+                "text-teal-300": currentFramework === "tailwind",
+                "text-blue-300": currentFramework === "react",
+                "text-green-300": currentFramework === "vue",
+                "text-orange-400": currentFramework === "svelte",
+                "text-red-300": currentFramework === "mobile",
+                "text-neutral-300": currentFramework === "desktop",
+              })}
+            >
+              never
+            </span>{" "}
+            be the same again
           </h1>
         </div>
       </div>
