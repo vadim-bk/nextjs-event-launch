@@ -4,10 +4,16 @@ import { assets } from "@/utils/assets";
 import { Framework, frameworks } from "@/utils/framework";
 import { cn } from "@/utils/tailwind";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Poppins } from "next/font/google";
 import { FrameworkRotation } from "@/components/FrameworkRotation";
-import { CountdownTimer } from "@/components/CountdownTimer";
+import { Cursor } from "@/components/Cursor";
+import dynamic from "next/dynamic";
+
+const CountdownTimer = dynamic(
+  () => import("@/components/CountdownTimer").then((mod) => mod.CountdownTimer),
+  { ssr: false }
+);
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,6 +26,8 @@ export default function Home() {
   );
 
   const [showBackground, setShowBackground] = useState(false);
+
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     let currentIndex = 0;
@@ -133,6 +141,7 @@ export default function Home() {
 
           <div className="mb-8">
             <button
+              ref={buttonRef}
               className={cn(
                 "text-black px-6 py-3 rounded-md text-sm font-semibold transition-colors duration-200",
                 {
@@ -155,6 +164,8 @@ export default function Home() {
           <CountdownTimer currentFramework={currentFramework} />
         </div>
       </div>
+
+      <Cursor buttonRef={buttonRef} />
     </main>
   );
 }
